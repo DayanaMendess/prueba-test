@@ -1,0 +1,35 @@
+@startuml
+
+class Cliente{
+    id : int
+    nombre : String
+    celular : String
+}
+
+class Producto{
+    id : int
+    nombre : String
+    description : String
+    valorUnitario: Decimal    
+}
+
+class Venta{
+    id : int
+    fecha : Date
+    totalPagar: Decimal
+    clienteId : Cliente
+}
+
+class DetalleVenta{
+    valorTotal : Decimal
+    valorUnitario: Decimal
+   cantidad : int
+   productoId : Producto
+   ventaId : Venta
+}
+
+Cliente "1" -- "*"  Venta
+Venta "1" -- "*" DetalleVenta
+Producto "1" -- "*" DetalleVenta
+
+@enduml
